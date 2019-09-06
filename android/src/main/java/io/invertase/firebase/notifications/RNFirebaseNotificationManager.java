@@ -228,7 +228,7 @@ class RNFirebaseNotificationManager {
 
   WritableMap getChannelGroup(String channelGroupId) {
     if (Build.VERSION.SDK_INT >= 28) {
-      //return createChannelGroupMap(notificationManager.getNotificationChannelGroup(channelGroupId));
+      return createChannelGroupMap(notificationManager.getNotificationChannelGroup(channelGroupId));
     }
 
     return null;
@@ -328,7 +328,7 @@ class RNFirebaseNotificationManager {
 
       if (Build.VERSION.SDK_INT >= 28 && channelGroupMap.hasKey("description")) {
         String description = channelGroupMap.getString("description");
-       // notificationChannelGroup.setDescription(description);
+        notificationChannelGroup.setDescription(description);
       }
 
       return notificationChannelGroup;
@@ -404,7 +404,7 @@ class RNFirebaseNotificationManager {
       writableMap.putString("name", notificationChannelGroup.getName().toString());
       writableMap.putArray("channels", createChannelsArray(notificationChannelGroup.getChannels()));
       if (Build.VERSION.SDK_INT >= 28) {
-       // writableMap.putString("description", notificationChannelGroup.getDescription());
+        writableMap.putString("description", notificationChannelGroup.getDescription());
       }
     }
 
